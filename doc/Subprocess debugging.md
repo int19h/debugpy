@@ -30,7 +30,6 @@ connection from the adapter.
 
 ```mermaid
 sequenceDiagram
-# Install "GitHub + Mermaid" from the Chrome Web Store to render the diagram
 
 participant IDE
 participant Adapter
