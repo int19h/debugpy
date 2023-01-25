@@ -70,7 +70,7 @@ Adapter ->>+ Debuggee_2: request "pydevd_systemInfo"
 
 Debuggee_2 -->>- Adapter: respond to "pydevd_systemInfo"
 
-Adapter ->>+ IDE: "ptvsd_subprocess" event:
+Adapter ->>+ IDE: "debugpyAttach" event:
 
 IDE ->>- Adapter: connect to IDE listener port
 
@@ -124,7 +124,6 @@ Adapter -->>- IDE: confirm "disconnect" from Debuggee_1
 
 ```mermaid
 sequenceDiagram
-# Install "GitHub + Mermaid" from the Chrome Web Store to render the diagram
 
 participant IDE
 participant Adapter
@@ -173,7 +172,7 @@ Adapter ->>+ Debuggee_2: request "pydevd_systemInfo"
 
 Debuggee_2 -->>- Adapter: respond to "pydevd_systemInfo"
 
-Adapter ->>+ IDE: "ptvsd_subprocess" event
+Adapter ->>+ IDE: "debugpyAttach" event
 
 IDE ->>- Adapter: connect to IDE listener port
 
@@ -236,7 +235,7 @@ note right of Debuggee_1: debug session begins
 
 Debuggee_1 -->>- Adapter: respond to "initialize", "attach"
 
-Adapter ->>+ IDE: "ptvsd_subprocess" event
+Adapter ->>+ IDE: "debugpyAttach" event
 
 Adapter -->>- IDE: respond to "attach"
 
@@ -293,7 +292,7 @@ disconnects, the state of the instance is reset.
 
 ### How does the IDE know which subprocess to connect to?
 
-It receives a "ptvsd_subprocess" event from the adapter (using the connection for the
+It receives a "debugpyAttach" event from the adapter (using the connection for the
 root process), which contains host and port on which the adapter is listening for new
 connections from the IDE, and PID of the subprocess. It then connects to the specified
 host and port, and sends an "attach" request with "processId" from the event.
