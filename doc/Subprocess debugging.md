@@ -116,7 +116,7 @@ Adapter -->>- IDE: confirm "disconnect" from Debuggee_1
 
 ## "attach" scenario
 
-1. User starts debuggee process with debug server in it (debugpy command line or `debugpy.enable_attach()`).
+1. User starts debuggee process with debug server in it (debugpy CLI or API).
 1. User starts debugging (F5) with "attach" debug config.
 1. User code spawns child process.
 1. User disconnects from debuggee.
